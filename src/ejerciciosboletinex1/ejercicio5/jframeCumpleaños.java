@@ -86,11 +86,21 @@ public class jframeCumpleaños extends javax.swing.JFrame {
 
     long diff = fecha.getTime() - nacimiento.getTime();
     int edad = (int) (diff / (1000L * 60 * 60 * 24 * 365));
-    
+   java.util.Calendar prox = java.util.Calendar.getInstance();
+    prox.setTime(nacimiento);
+    java.util.Calendar hoyCal = java.util.Calendar.getInstance();
+
+    prox.set(java.util.Calendar.YEAR, hoyCal.get(java.util.Calendar.YEAR));
+    if (!prox.after(hoyCal)) {
+        prox.add(java.util.Calendar.YEAR, 1);
+    }
+
+    long dias = (prox.getTimeInMillis() - fecha.getTime()) / (1000L * 60 * 60 * 24);
+
     javax.swing.JOptionPane.showMessageDialog(
         this,
-        "la edad actual es : " + edad + " años",
-        "Edad",
+        "Edad: " + edad + " años\nFaltan " + dias + " días para tu próximo cumpleaños",
+        "Información",
         javax.swing.JOptionPane.INFORMATION_MESSAGE
     );
     }//GEN-LAST:event_jButton1ActionPerformed
