@@ -13,11 +13,13 @@ public class Jugador {
     String nombre;
     int puntaje;
     int nivel;
+    String prioridad;
 
-    public Jugador(String nombre, int puntaje, int nivel) {
+    public Jugador(String nombre, int puntaje, int nivel, String prioridad) {
         this.nombre = nombre;
         this.puntaje = puntaje;
         this.nivel = nivel;
+        this.prioridad = prioridad;
     }
 
     public String getNombre() {
@@ -42,6 +44,14 @@ public class Jugador {
 
     public void setNivel(int nivel) {
         this.nivel = nivel;
+    }
+
+    public String getPrioridad() {
+        return prioridad;
+    }
+
+    public void setPrioridad(String prioridad) {
+        this.prioridad = prioridad;
     }
 
 }
