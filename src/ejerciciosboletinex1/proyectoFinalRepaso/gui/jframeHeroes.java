@@ -11,10 +11,13 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.RowSorter;
 import javax.swing.SortOrder;
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
@@ -58,6 +61,16 @@ public class jframeHeroes extends javax.swing.JFrame {
         long timeStampSegundos = System.currentTimeMillis() / 1000;
 
         fechaUnix.setText("Hora Unix: " + timeStampSegundos + " segundos");
+        
+         DefaultComboBoxModel dcm = new DefaultComboBoxModel();
+
+        for (UIManager.LookAndFeelInfo lf : UIManager.getInstalledLookAndFeels()) {
+
+            dcm.addElement(lf.getName());
+
+        }
+
+        jComboBox1.setModel(dcm);
     }
 
     /**
@@ -76,6 +89,7 @@ public class jframeHeroes extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         fechaNormal = new javax.swing.JLabel();
         fechaUnix = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
@@ -131,6 +145,13 @@ public class jframeHeroes extends javax.swing.JFrame {
             .addComponent(fechaUnix, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -139,6 +160,8 @@ public class jframeHeroes extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47)
                 .addComponent(jButton2)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
@@ -158,7 +181,8 @@ public class jframeHeroes extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
-                    .addComponent(jButton1))
+                    .addComponent(jButton1)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -239,6 +263,31 @@ public class jframeHeroes extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+
+
+try {
+        
+
+        UIManager.LookAndFeelInfo lookandfeel = UIManager.getInstalledLookAndFeels()[jComboBox1.getSelectedIndex()];
+
+     
+        
+        UIManager.setLookAndFeel(lookandfeel.getClassName());
+        SwingUtilities.updateComponentTreeUI(this);
+        
+        
+
+
+
+
+}catch( Exception e){}
+
+
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -269,6 +318,7 @@ public class jframeHeroes extends javax.swing.JFrame {
     private javax.swing.JLabel fechaUnix;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
